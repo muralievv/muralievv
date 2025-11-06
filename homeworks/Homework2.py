@@ -6,28 +6,25 @@ class Animal:
     def info(self) -> str:
         return f"{self.name}, {self.age} years old, {self.health}hp."
     def use_ability(self) -> str:
-        return f"{self.name}, uses basic ability"
+        return f"{self.name}, uses basic ability."
 class Flyable:
     def use_ability(self) -> str:
-        return f"{self.name} can fly"
+        return super().use_ability() + " Can fly"
 class Swimmable:
     def use_ability(self) -> str:
-        return f"{self.name} can swim"
+        return super().use_ability() + " Can swim."
 class Invisible:
     def use_ability(self) -> str:
-        return f"{self.name} can be invisible"
+        return super().use_ability() + " Can be invisible."
 class Duck(Flyable,Swimmable, Animal):
-    def use_ability(self):
-        return f"{self.name } Uses basic ability. Can swim. Can fly."
-class Bat(Animal,Flyable):
-    def use_ability(self):
-        return f"{self.name} Uses basic ability. Can fly. Can be invisible."
-class Frog(Animal,Swimmable):
-    def use_ability(self):
-        return f"{self.name} Uses basic ability. Can swim."
+    pass
+class Bat(Flyable,Invisible,Animal):
+    pass
+class Frog(Swimmable, Animal):
+    pass
 class Phoenix(Flyable,Invisible, Animal):
-    def use_ability(self):
-        return f"{self.name} Uses basic ability. Can fly. Can be invisible."
+    def reborn(self):
+        return f"{self.name} Reborn."
 class Zoo():
     def add_animal(self, animal: Animal):
         self.animals.append(animal)
