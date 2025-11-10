@@ -25,7 +25,7 @@ class Frog(Swimmable, Animal):
 class Phoenix(Flyable,Invisible, Animal):
     def reborn(self):
         return f"{self.name} Reborn."
-class Zoo():
+class Zoo:
     def add_animal(self, animal: Animal):
         self.animals.append(animal)
     def __init__(self):
