@@ -12,9 +12,9 @@ class MageHero(Hero):
         self.mp = mp
     def action(self):
         return f"Маг {self.name} кастует заклинание! MP: {self.mp}"
-class WarriorHero(Hero):
+class WarriorHero(MageHero):
     def __init__(self, name, lvl, hp,):
-        super().__init__(name, lvl, hp)
+        super().__init__(name, lvl, hp, mp=0)
     def action(self):
         return f"Воин {self.name} рубит мечом! Уровень: {self.lvl}"
 class BankAccount:
@@ -25,7 +25,7 @@ class BankAccount:
         self._balance = balance      # защищённый
         self.__password = password   # приватный
     def login(self, password):
-        if password == password:
+        if password == self.__password:
             print("Вы успешно вошли!")
         else:
             print("Неправильный пароль!")
@@ -49,11 +49,12 @@ class BankAccount:
         return f"{self.hero}, Баланс: {self._balance}SOM"
     def __add__(self, other):
         if type(self.hero) == type(other.hero):
-            return (self._balance + other._balance)
+            return f"Общий баланс: {self._balance + other._balance} SOM"
+
         else:
             return f"Формат типа героев не совпадает."
     def __eq__(self, other):
-        return (self.hero == other.hero, self._balance == other._balance)
+        return self.hero == other.hero and self._balance == other._balance
 from abc import ABC, abstractmethod
 
 class SmsService(ABC):
